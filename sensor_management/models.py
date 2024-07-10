@@ -1,15 +1,16 @@
 from django.db import models
 import uuid
 
-class Reading(models.Model):
+
+class IntruderAttempt(models.Model):
+    STATUS = (
+        (0, "OFF"),
+        (1, "ON")
+    )
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    trigger = models.IntegerField(null=True)
-    pir1 = models.IntegerField()
-    pir2 = models.IntegerField()
-    pir3 = models.IntegerField()
-    pir4 = models.IntegerField()
-    status = models.IntegerField()
+    pir = models.IntegerField(choices=[(1, 'PIR1'), (2, 'PIR2'), (3, 'PIR3'), (4, 'PIR4')], default=1)
+    status = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        db_table = 'reading'
+        db_table = 'intruder_attempts'
