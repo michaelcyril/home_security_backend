@@ -5,4 +5,10 @@ from sensor_management.models import *
 class IntruderAttemptSerializer(serializers.ModelSerializer):
     class Meta:
         model = IntruderAttempt
-        fields = ['id', 'trigger', 'pir', 'status', 'created_at']
+        fields = ['id', 'pir', 'status', 'created_at']
+
+
+class SensorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sensor
+        fields = ['id', 'pir', 'status', 'created_at']
