@@ -92,11 +92,11 @@ This Django project allows for the creation and management of sensors. The proje
 - **Response:**
     - If sensor is not found:
         ```json
-        {"send": False, "error": "Sensor not found"}
+        {"send": false, "error": "Sensor not found"}
         ```
     - If action is successfully triggered:
         ```json
-        {"send": True}
+        {"send": true}
         ```
 
 ### 3. Create/Get Intruder Attempt
@@ -125,8 +125,7 @@ This Django project allows for the creation and management of sensors. The proje
             "pir": "PIR3",
             "status": 1,
             "created_at": "2024-07-11T03:38:20.542303Z"
-        },
-        ...
+        }
     ]
     ```
 
@@ -141,11 +140,11 @@ This Django project allows for the creation and management of sensors. The proje
 - **Response:**
     - If sensor is not found:
         ```json
-        {"send": False, "error": "Sensor not found"}
+        {"send": false, "error": "Sensor not found"}
         ```
     - If attempt is successfully logged:
         ```json
-        {"send": True}
+        {"send": true}
         ```
 
 ## Note
