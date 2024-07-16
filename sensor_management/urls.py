@@ -6,4 +6,6 @@ urlpatterns = [
     path('create-get-intruder-attempt', IntruderRequestsView.as_view()),
     path('trigger-action', TriggerAction.as_view()),
     path('create-get-sensor', CreateGetSensorView.as_view()),
+    path('create-get-alarm', getAlarmView),
+    path('activate-deactivate-alarm', ActivateDeactivateAlarm.as_view()),
 ]

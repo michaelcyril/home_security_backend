@@ -8,8 +8,8 @@ class IntruderAttempt(models.Model):
         (1, "ON")
     )
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    pir = models.IntegerField(choices=[(1, 'PIR1'), (2, 'PIR2'), (3, 'PIR3'), (4, 'PIR4')], default=1)
-    status = models.IntegerField(default=0)
+    pir = models.IntegerField(choices=[(1, 'PIR1'), (2, 'PIR2'), (3, 'PIR3'), (4, 'PIR4')])
+    status = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -28,3 +28,19 @@ class Sensor(models.Model):
 
     class Meta:
         db_table = 'sensors'
+
+
+class Alarm(models.Model):
+    STATUS = (
+        (0, "OFF"),
+        (1, "ON")
+    )
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    status = models.IntegerField(default=0)
+    normal_status = models.IntegerField(default=0)
+
+    def __str__(self):
+        return f'{self.id}'
+
+    class Meta:
+        db_table = 'alarm'
