@@ -127,3 +127,29 @@ def getAlarmView(request):
 #     "status": 1,
 #     "PIR": "PIR1"
 # }
+
+
+class CreateGetProfileData(APIView):
+    permission_classes = [AllowAny]
+
+    @staticmethod
+    def post(request):
+        queryset = Profile.objects.all()
+        data = request.data
+        if len(queryset) == 0:
+            serialized = ProfileSerializer(data=data)
+            if serialized.is_valid():
+                serialized.save()
+                return Response({"send": True})
+            return Response({"send": False, "error": serialized.errors})
+        queryset[0].username = data['username']
+        queryset[0].phone_number = data['phone_number']
+        queryset[0].server_ip = data['server_ip']
+        queryset[0].email = data['email']
+        queryset[0].save()
+        return Response({"send": True})
+
+    @staticmethod
+    def get(request):
+        queryset = Profile.objects.all()
+        return Response(ProfileSerializer(instance=queryset[0]).data)

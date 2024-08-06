@@ -44,3 +44,17 @@ class Alarm(models.Model):
 
     class Meta:
         db_table = 'alarm'
+
+
+class Profile(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    username = models.CharField(max_length=255)
+    phone_number = models.CharField(max_length=255)
+    server_ip = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
+
+    def __str__(self):
+        return f'{self.id}'
+
+    class Meta:
+        db_table = 'profile'
